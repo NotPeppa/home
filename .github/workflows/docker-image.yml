@@ -1,15 +1,12 @@
-name: Docker Image CI and Push to Aliyun ACR
+name: Docker Image CI and Push 'latest' to Aliyun ACR (Simplified)
 
 on:
   push:
     branches: [ "dev" ]
-  # pull_request: # 通常不在 PR 时推送最终镜像
-  #   branches: [ "dev" ]
 
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
-    # 不需要额外的 permissions 来推送外部仓库
 
     steps:
     - name: Checkout repository
@@ -21,23 +18,19 @@ jobs:
     - name: Log in to Aliyun Container Registry (ACR)
       uses: docker/login-action@v3
       with:
-        registry: ${{ secrets.ACR_REGISTRY }} # ACR 访问地址
-        username: ${{ secrets.ACR_USERNAME }} # ACR 用户名 (AccessKey ID)
-        password: ${{ secrets.ACR_PASSWORD }} # ACR 密码 (AccessKey Secret / 固定密码 / 临时令牌)
+        registry: ${{ secrets.ACR_REGISTRY }}
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
 
-    - name: Generate image tags and labels
-      id: docker_meta
-      uses: docker/metadata-action@v5
-      with:
-        # 格式: registry/namespace/repository
-        images: ${{ secrets.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/${{ secrets.ACR_REPOSITORY }}
-        tags: latest
+    # 移除了 docker/metadata-action 步骤
 
-    - name: Build and push Docker image to ACR
+    - name: Build and push Docker image to ACR as 'latest'
       uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
-        push: true # 确保设置为 true 来推送镜像
-        tags: ${{ steps.docker_meta.outputs.tags }}
-        labels: ${{ steps.docker_meta.outputs.labels }}
+        push: true
+        # 直接在这里硬编码完整的镜像名和 'latest' 标签
+        tags: ${{ secrets.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/${{ secrets.ACR_REPOSITORY }}:latest
+        # 注意：这样会丢失 metadata-action 自动生成的 labels
+        # labels: ${{ steps.docker_meta.outputs.labels }} # 这一行需要移除或注释掉
