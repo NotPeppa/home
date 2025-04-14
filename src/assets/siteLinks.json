@@ -5,13 +5,8 @@
     "link": "https://blog.cipheror.com"
   },
   {
-    "icon": "Github",
-    "name": "Github",
-    "link": "https://github.com/NotPeppa"
-  },
-  {
-    "icon": "Telegram",
-    "name": "Telegram",
-    "link": "https://t.me/cipheror_bot"
+    "icon": "URL",
+    "name": "短链接",
+    "link": "https://url.isfree.pp.ua"
   }
 ]
