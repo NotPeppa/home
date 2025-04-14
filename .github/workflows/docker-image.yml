@@ -31,9 +31,7 @@ jobs:
       with:
         # 格式: registry/namespace/repository
         images: ${{ secrets.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/${{ secrets.ACR_REPOSITORY }}
-        tags: |
-          type=sha,prefix=dev- # 基于 commit SHA 生成 tag，如 dev-a1b2c3d
-          # type=raw,value=latest,enable={{is_default_branch}} # 如果是主分支才打 latest (可选)
+        tags: latest
 
     - name: Build and push Docker image to ACR
       uses: docker/build-push-action@v5
