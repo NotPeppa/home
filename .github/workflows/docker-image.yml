@@ -1,18 +1,45 @@
-name: Docker Image CI
+name: Docker Image CI and Push to Aliyun ACR
 
 on:
   push:
     branches: [ "dev" ]
-  pull_request:
-    branches: [ "dev" ]
+  # pull_request: # 通常不在 PR 时推送最终镜像
+  #   branches: [ "dev" ]
 
 jobs:
-
-  build:
-
+  build_and_push:
     runs-on: ubuntu-latest
+    # 不需要额外的 permissions 来推送外部仓库
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag home:$(date +%s)
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Log in to Aliyun Container Registry (ACR)
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ secrets.ACR_REGISTRY }} # ACR 访问地址
+        username: ${{ secrets.ACR_USERNAME }} # ACR 用户名 (AccessKey ID)
+        password: ${{ secrets.ACR_PASSWORD }} # ACR 密码 (AccessKey Secret / 固定密码 / 临时令牌)
+
+    - name: Generate image tags and labels
+      id: docker_meta
+      uses: docker/metadata-action@v5
+      with:
+        # 格式: registry/namespace/repository
+        images: ${{ secrets.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/${{ secrets.ACR_REPOSITORY }}
+        tags: |
+          type=sha,prefix=dev- # 基于 commit SHA 生成 tag，如 dev-a1b2c3d
+          # type=raw,value=latest,enable={{is_default_branch}} # 如果是主分支才打 latest (可选)
+
+    - name: Build and push Docker image to ACR
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true # 确保设置为 true 来推送镜像
+        tags: ${{ steps.docker_meta.outputs.tags }}
+        labels: ${{ steps.docker_meta.outputs.labels }}
