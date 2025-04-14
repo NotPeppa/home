@@ -1,6 +1,6 @@
 [
   {
-    "icon": "Blog",
+    "icon": "AutoStoriesOutlined",
     "name": "博客",
     "link": "https://blog.cipheror.com"
   },
@@ -8,5 +8,15 @@
     "icon": "IosLink",
     "name": "短链接",
     "link": "https://url.isfree.pp.ua"
+  },
+  {
+    "icon": "MusicNote220Regular",
+    "name": "第三方网易云",
+    "link": "https://music.cipheror.com"
+  },
+  {
+    "icon": "MoviesAndTv24Regular",
+    "name": "影视站",
+    "link": "https://tv.isfree.zone.id"
   }
 ]
