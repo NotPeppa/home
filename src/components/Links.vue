@@ -45,7 +45,7 @@ import { Icon } from "@vicons/utils";
 // 可前往 https://www.xicons.org 自行挑选并在此处引入
 import { Link, Blog, CompactDisc, Cloud, Compass, Book, Fire, LaptopCode } from "@vicons/fa"; // 注意使用正确的类别
 import { IosLink } from "@vicons/ionicons4";
-import { LibraryMusicOutlined, AutoStoriesOutlined } from "@vicons/material";
+import { LibraryMusicOutlined, AutoStoriesOutlined, AddPhotoAlternateOutlined } from "@vicons/material";
 import { MoviesAndTv24Regular, MusicNote220Regular } from "@vicons/fluent";
 import { mainStore } from "@/store";
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -78,7 +78,8 @@ const siteIcon = {
   LibraryMusicOutlined,
   MoviesAndTv24Regular,
   AutoStoriesOutlined,
-  MusicNote220Regular
+  MusicNote220Regular,
+  AddPhotoAlternateOutlined
 };
 
 // 链接跳转

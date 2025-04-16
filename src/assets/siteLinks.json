@@ -18,5 +18,10 @@
     "icon": "MoviesAndTv24Regular",
     "name": "影视站",
     "link": "https://tv.isfree.zone.id"
+  },
+  {
+    "icon": "AddPhotoAlternateOutlined",
+    "name": "图床",
+    "link": "https://backblaze.isfree.pp.ua/cipheror"
   }
 ]
