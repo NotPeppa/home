@@ -23,5 +23,10 @@
     "icon": "AddPhotoAlternateOutlined",
     "name": "图床",
     "link": "https://backblaze.isfree.pp.ua/cipheror"
+  },
+  {
+    "icon": "Terminal2",
+    "name": "WebSSH",
+    "link": "https://webssh.cipheror.hidns.vip"
   }
 ]

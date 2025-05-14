@@ -47,6 +47,7 @@ import { Link, Blog, CompactDisc, Cloud, Compass, Book, Fire, LaptopCode } from 
 import { IosLink } from "@vicons/ionicons4";
 import { LibraryMusicOutlined, AutoStoriesOutlined, AddPhotoAlternateOutlined } from "@vicons/material";
 import { MoviesAndTv24Regular, MusicNote220Regular } from "@vicons/fluent";
+import { Terminal2 } from "@vicons/tabler";
 import { mainStore } from "@/store";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Mousewheel } from "swiper/modules";
@@ -79,7 +80,8 @@ const siteIcon = {
   MoviesAndTv24Regular,
   AutoStoriesOutlined,
   MusicNote220Regular,
-  AddPhotoAlternateOutlined
+  AddPhotoAlternateOutlined,
+  Terminal2
 };
 
 // 链接跳转
