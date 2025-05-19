@@ -5,9 +5,9 @@
     "link": "https://blog.cipheror.com"
   },
   {
-    "icon": "IosLink",
-    "name": "短链接",
-    "link": "https://url.isfree.pp.ua"
+    "icon": "WebhookRound",
+    "name": "域名邮箱、免费DNS解析、短链接",
+    "link": "https://domains.cipheror.com"
   },
   {
     "icon": "MusicNote220Regular",
@@ -28,5 +28,10 @@
     "icon": "Terminal2",
     "name": "WebSSH",
     "link": "https://webssh.cipheror.hidns.vip"
+  },
+  {
+    "icon": "IosLink",
+    "name": "短链接",
+    "link": "https://url.isfree.pp.ua"
   }
 ]
