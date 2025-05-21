@@ -3,7 +3,7 @@
     "name": "Github",
     "icon": "/images/icon/github.png",
     "tip": "去 Github 看看",
-    "url": "https://github.com/NotPeppa"
+    "url": "https://github.com/cipherorcom"
   },
   {
     "name": "Email",
@@ -15,6 +15,6 @@
     "name": "Telegram",
     "icon": "/images/icon/telegram.png",
     "tip": "你懂的 ~",
-    "url": "https://t.me/cipheror_bot"
+    "url": "https://t.me/cipheror_com"
   }
 ]
